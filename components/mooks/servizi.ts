@@ -1,17 +1,17 @@
-interface Element {
+export interface Element {
     title: string;
     subtitle: string;
     otherElements: boolean;
-    elementLink: string;
+    elementLink: string | null;
     elements: Element[] | null;
 }
 
-interface Servizio {
+export interface Servizio {
     title: string;
     subtitle: string;
     schema: {
         otherElements: boolean;
-        elementLink: string;
+        elementLink: string | null;
         elements: Element[] | null;
     };
 }
@@ -22,7 +22,7 @@ export const SERVIZI: Servizio[] = [
         subtitle: 'lorem ipsum dolor sit amet',
         schema: {
             otherElements: true,
-            elementLink: '',
+            elementLink: null,
             elements: [
                 {
                     title: 'Vendita',
@@ -49,13 +49,13 @@ export const SERVIZI: Servizio[] = [
         subtitle: 'lorem ipsum dolor sit amet',
         schema: {
             otherElements: true,
-            elementLink: '',
+            elementLink: null,
             elements: [
                 {
                     title: 'Gara manuale',
                     subtitle: 'lorem ipsum dolor sit amet',
                     otherElements: true,
-                    elementLink: '',
+                    elementLink: null,
                     elements: [
                         {
                             title: 'Gara professionale',
@@ -76,14 +76,14 @@ export const SERVIZI: Servizio[] = [
                 {
                     title: 'Gara automatizzata',
                     subtitle: 'lorem ipsum dolor sit amet',
-                    otherElements: true,
+                    otherElements: false,
                     elementLink: '/',
                     elements: null
                 },
                 {
                     title: 'Gare in corso',
                     subtitle: 'lorem ipsum dolor sit amet',
-                    otherElements: true,
+                    otherElements: false,
                     elementLink: '/',
                     elements: null
                 },
@@ -94,9 +94,31 @@ export const SERVIZI: Servizio[] = [
         title: 'Gare in corso',
         subtitle: 'lorem ipsum dolor sit amet',
         schema: {
-            otherElements: true,
+            otherElements: false,
             elementLink: '/',
             elements: null
         }
     }
+]
+
+export const VETRINA_AZIENDALE: Servizio[] = [
+    {
+        title: 'Imprese',
+        subtitle: 'lorem ipsum dolor sit amet',
+        schema: {
+            otherElements: true,
+            elementLink: '/',
+            elements: null
+        }
+    },
+    {
+        title: 'Professionisti',
+        subtitle: 'lorem ipsum dolor sit amet',
+        schema: {
+            otherElements: true,
+            elementLink: '/',
+            elements: null
+        }
+    },
+
 ]
