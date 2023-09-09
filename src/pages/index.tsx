@@ -1,27 +1,27 @@
 import TEST_TESTO from '@/lib/apollo/dato_CMS/queries/getButtonTest';
 import { useQuery } from '@apollo/client'
-import { Button } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import React from 'react'
 
 const index = () => {
-    const { loading, error, data } = useQuery(TEST_TESTO, {
+    /* const { loading, error, data } = useQuery(TEST_TESTO, {
         context: {
             clientName: 'DATO_CMS_LINK',
         }
     });
-    console.log(data);
+    console.log(data); */
 
     return (
-        <>
-            {
+        <Box className='h-[300vh]'>
+            {/* {
                 data ?
                     <Button
                         //colorScheme='cyan'
                         variant={'primary'}
                     >{data?.testtesto?.buttonTitle}</Button> :
                     null
-            }
-        </>
+            } */}
+        </Box>
 
     )
 }
