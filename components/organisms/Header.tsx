@@ -166,7 +166,7 @@ export default function Header() {
             >
                 <Text
                     color={'base'}
-                    fontSize={'h5'}
+                    textStyle={'h5'}
                     fontWeight={'semibold'}
                     my={4}
                     mb={6}
@@ -191,7 +191,7 @@ export default function Header() {
             >
                 <Text
                     color={'base'}
-                    fontSize={'h5'}
+                    textStyle={'h5'}
                     fontWeight={'semibold'}
                     my={4}
                     mb={6}

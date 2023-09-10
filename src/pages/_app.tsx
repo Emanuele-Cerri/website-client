@@ -6,6 +6,7 @@ import { designSystemChakraUi } from '@/config/designSystemChakraUi';
 import { useApollo } from '../lib/apollo'
 import { ApolloProvider } from '@apollo/client';
 import Header from '../../components/organisms/Header';
+import Footer from '../../components/organisms/Footer';
 
 const theme = extendTheme(designSystemChakraUi)
 
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <ChakraProvider theme={theme}>
                 <Header />
                 <Component {...pageProps} />
+                <Footer />
             </ChakraProvider>
         </ApolloProvider>
 

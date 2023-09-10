@@ -12,7 +12,7 @@ const index = () => {
     console.log(data); */
 
     return (
-        <Box className='h-[300vh]'>
+        <Box className='h-[150vh]'>
             {/* {
                 data ?
                     <Button
