@@ -41,7 +41,7 @@ export const designSystemChakraUi = {
         }
     },
     fontWeights: {
-        semibold: '600'
+        semibold: '600',
     },
     components: {
         Button: {
@@ -84,6 +84,30 @@ export const designSystemChakraUi = {
                         bg: "warning20",
                         opacity: 1,
                         color: "dark"
+                    },
+                    _active: {
+                        bg: "warning30",
+                        transform: 'scale(0.98)', //!chiedere a fedele quanto farlo scalare
+                    },
+                    _disabled: {
+                        bg: "white",
+                        color: "darkGrey",
+                        opacity: 1,
+                        transform: "scale(0.98)", //!chiedere a fedele quanto farlo scalare
+
+                    },
+
+                },
+                tertiaryPressed: {
+                    bg: "white",
+                    color: "pressed",
+                    borderRadius: '0px',
+                    paddingY: '10px',
+                    paddingX: '15px',
+                    _hover: {
+                        bg: "warning20",
+                        opacity: 1,
+                        color: "pressed"
                     },
                     _active: {
                         bg: "warning30",

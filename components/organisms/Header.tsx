@@ -177,11 +177,6 @@ export default function Header() {
                 <ServiziMenu elements={servizi.current} />
                 {/* <SlimMenu items={SERVIZI} /> */}
 
-
-
-
-
-
             </Box>}
             {panelVetrinaAziendale && <Box
                 minH={'300px'}
