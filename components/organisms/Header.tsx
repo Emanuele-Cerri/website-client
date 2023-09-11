@@ -163,6 +163,7 @@ export default function Header() {
                 borderColor={'grayBlue'}
                 paddingX={16}
                 paddingY={4}
+                className='absolute top-20 bg-white w-full'
             >
                 <Text
                     color={'base'}
@@ -183,11 +184,12 @@ export default function Header() {
 
             </Box>}
             {panelVetrinaAziendale && <Box
-                minH={'350px'}
+                minH={'300px'}
                 borderTopWidth={'1px'}
                 borderColor={'grayBlue'}
                 paddingX={16}
                 paddingY={4}
+                className='absolute top-20 bg-white w-full'
             >
                 <Text
                     color={'base'}
