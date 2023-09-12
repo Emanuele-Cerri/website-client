@@ -319,8 +319,8 @@ const index = () => {
                 })}
             </Box>
             <Box
-                className="md:hidden justify-between gap-[24px]"
-                px={10}
+                className="md:hidden grid gap-[24px]"
+                px={'24px'}
             >
                 {TIPOLOGIE_DI_LAVORO.map((work: WORK_TIPOLOGY, index: number) => {
                     return (
@@ -328,39 +328,52 @@ const index = () => {
                             my={'auto'}
                             key={index}
                             borderRadius={'8px'}
-                            padding={'24px'}
                             textAlign={'center'}
                             zIndex={10}
                             bg={'white'}
+                            border={'1px'}
+                            width={'full'}
+                            borderColor={'blueGray'}
                             style={{
                                 boxShadow: '0px 20px 24px -4px rgba(16, 24, 40, 0.08)',
-                            }
-                            }
+                            }}
                         >
-                            <LazyLoadImage
-                                alt={}
 
-                             />
+                            <Image
+                                alt={''}
+                                src={work.imgSrc}
+                                width={'100%'}
+                                objectFit={"cover"}
+                            />
                             <Box
-                                borderRadius={'full'}
-                                h={'80px'}
-                                w={'80px'}
-                                bg={'warning20'}
-                                mx={'auto'}
-                                mb={'48px'}
                                 display={'flex'}
+                                gap={4}
+                                padding={'12px'}
                             >
                                 <Box
-                                    m={'auto'}
-                                    dangerouslySetInnerHTML={{ __html: work.bigIcon }}
-                                ></Box>
+                                    borderRadius={'full'}
+                                    mt={'12px'}
+                                    h={'48px'}
+                                    w={'48px'}
+                                    bg={'warning20'}
+                                    display={'flex'}
+                                    my={'auto'}
+                                >
+                                    <Box
+                                        m={'auto'}
+                                        dangerouslySetInnerHTML={{ __html: work.smallIcon }}
+                                    ></Box>
+                                </Box>
+                                <Text
+                                    my={'auto'}
+
+                                    textStyle={'h4'}
+                                    fontWeight={'700'}
+                                >
+                                    {work.title}
+                                </Text>
                             </Box>
-                            <Text
-                                textStyle={'h4'}
-                                fontWeight={'700'}
-                            >
-                                {work.title}
-                            </Text>
+
                         </Box>
                     )
                 })}
