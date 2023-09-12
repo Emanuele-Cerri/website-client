@@ -105,7 +105,6 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                             {card.bottone[0].text}
                         </Button>
                     </Box>
-
                 }
             </Box>
         </Box >
