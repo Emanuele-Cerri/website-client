@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 
 export interface ExplenationCardInterface {
     titolo: string,
-    sottotitolo: string,
+    sottotitolo?: string,
     descrizione: string,
     icon: any,
     bottone?: {
@@ -17,17 +17,14 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
     return (
         <Box
             display={'flex'}
-            justifyContent={'space-between'}
             width={['', '', 'full']}
             bg={['white', 'white', background]}
-
         >
             <Box
                 className='flex md:hidden'
                 borderRadius={'full'}
                 h={'40px'}
                 bg={'warning20'}
-                mx={'auto'}
                 width={'40px'}
             >
                 <Box
@@ -35,11 +32,8 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                     dangerouslySetInnerHTML={{ __html: card.icon }}
                 ></Box>
             </Box>
-
             <Box
                 p={[0, 0, '24px']}
-                gap={[0, 0, '24px']}
-                display={'grid'}
                 width={'fit-content'}
                 pl={[3, 3, '24px']}
                 textAlign={['start', 'start', 'center']}
@@ -51,6 +45,7 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                     w={'40px'}
                     bg={'warning20'}
                     mx={'auto'}
+                    mb={'24px'}
                 >
                     <Box
                         m={'auto'}
@@ -70,15 +65,16 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                     >
                         {card.titolo}
                     </Text>
-                    <hr className="hidden md:flex w-[270px] mx-auto h-[1px] bg-[#FCB900] border-0 " />
-                    <Text
+                    <hr className="hidden md:flex w-[270px] mx-auto h-[1px] bg-[#FCB900] border-0 mb-[24px]" />
+                    {card.sottotitolo && <Text
                         textStyle={'h5'}
                         fontWeight={'600'}
                         textTransform={'uppercase'}
                         className='hidden md:flex'
+                        mb={'24px'}
                     >
                         {card.sottotitolo}
-                    </Text>
+                    </Text>}
                 </Box>
 
                 <Text

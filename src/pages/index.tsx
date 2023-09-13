@@ -6,9 +6,60 @@ import React, { FC } from 'react'
 import ExplenationCard, { ExplenationCardInterface } from '../../components/molecules/ExplenationCard';
 import { TIPOLOGIE_DI_LAVORO, WORK_TIPOLOGY } from '../../components/mooks/tipologieDiLavoro';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import GET_HOME_DATA from '@/lib/apollo/dato_CMS/queries/getHomeData';
+import { initApollo } from '@/lib/apollo';
+
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries.
+export async function getStaticProps() {
+    // Call an external API endpoint to get posts.
+    // You can use any data fetching library
+    const apolloClient = initApollo();
+
+
+    const comeFunziona = await apolloClient.query({
+        query: GET_EXPLENATION_CARDS,
+        context: {
+            clientName: 'DATO_CMS_LINK',
+        },
+        variables: {
+            title: 'Come_funziona_una_gara'
+        }
+    });
+    const tipologieGara = await apolloClient.query({
+        query: GET_EXPLENATION_CARDS,
+        context: {
+            clientName: 'DATO_CMS_LINK',
+        },
+        variables: {
+            title: 'Tipologie_gara',
+        }
+    });
+    const perche_usare_skimming = await apolloClient.query({
+        query: GET_EXPLENATION_CARDS,
+        context: {
+            clientName: 'DATO_CMS_LINK',
+        },
+        variables: {
+            title: 'Perche_usare_skimming',
+        }
+    });
+
+    // By returning { props: { posts } }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+        props: {
+            comeFunziona,
+            tipologieGara,
+            perche_usare_skimming
+        },
+    }
+}
 
 
 const ComponentLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+
     return (
         <Box
             className='mt-[64px] md:mt-[280px] mb-[40px] md:mb-[32px] lg:w-7/12 mx-auto'
@@ -42,30 +93,12 @@ const ComponentTitle: FC<{ title: string, subtitle: string }> = ({ title, subtit
 }
 
 
-const index = () => {
-    const { loading, error, data } = useQuery(GET_EXPLENATION_CARDS, {
-        context: {
-            clientName: 'DATO_CMS_LINK',
-        },
-        variables: {
-            title: 'Come_funziona_una_gara'
-        }
-    });
-    const tipologieGara = useQuery(GET_EXPLENATION_CARDS, {
-        context: {
-            clientName: 'DATO_CMS_LINK',
-        },
-        variables: {
-            title: 'Tipologie_gara'
-        }
-    });
-    console.log(data?.explenationCardComponent.explenationCard)
-
+const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skimming: any }> = ({ comeFunziona, tipologieGara, perche_usare_skimming }) => {
 
 
 
     return (
-        <Box className='min-h-[150vh] text-center mb-[64px]'
+        <Box className='min-h-[150vh] text-center mb-[280px]'
 
 
         >
@@ -127,13 +160,20 @@ const index = () => {
                 >
                     Skimming ti aiuta a trovare le imprese più adatte a realizzare i tuoi progetti, filtrandole per tipologia, prezzo e qualità
                 </Text>
-                {data?.explenationCardComponent.explenationCard &&
+                {comeFunziona?.data?.explenationCardComponent.explenationCard &&
                     <Box
                         marginY={[12, 16, 20]}
                         marginX={[0, 0, 20]}
                         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-[20px]'
                     >
-                        {data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface) => <ExplenationCard card={card} background={'#FFF9EA'} />)
+                        {comeFunziona?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => {
+                            return (
+                                <>
+                                    {index > 0 && <hr className="w-[310px] md:hidden mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />}
+                                    <ExplenationCard card={card} background={'#FFF9EA'} key={index} />
+                                </>
+                            )
+                        })
                         }
                     </Box>
                 }
@@ -176,17 +216,18 @@ const index = () => {
                     className='hidden md:block'
                 >
                     {tipologieGara?.data?.explenationCardComponent.explenationCard &&
+
                         <Box
                             marginY={[12, 16, 20]}
                             marginX={[0, 0, 20]}
                             className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-[20px]'
                         >
-                            {tipologieGara?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface) => <ExplenationCard card={card} background={'white'} />)
+                            {tipologieGara?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => <ExplenationCard card={card} background={'white'} key={index} />)
                             }
                         </Box>
+
                     }
                 </Box>
-
                 <Box
                     className='block md:hidden my-[72px]'
                 >
@@ -377,6 +418,31 @@ const index = () => {
                         </Box>
                     )
                 })}
+            </Box>
+            <ComponentLayout>
+                <ComponentTitle title='Perchè usare Skimming?' subtitle='Perché è tutto fatto in modo rapido, semplice ed efficiente; non hai più bisogno di alzare il telefono e contattare tutte le figure che ti servono per un determinato lavoro, crei il tuo cluster e al suo interno hai già tutte le figure che solitamente chiami, ti basterà creare il lavoro e loro riceveranno immediatamente una notifica e potranno presentarti il loro prezzo.' />
+            </ComponentLayout>
+            <Box
+                className='block'
+            >
+                {perche_usare_skimming?.data?.explenationCardComponent.explenationCard &&
+                    <Box
+                        marginY={[12, 16, 20]}
+                        marginX={['24px', '24px', 20]}
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-[20px]'
+                    >
+                        {perche_usare_skimming?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => {
+                            return (
+                                <>
+                                    {index > 0 && <hr className="md:hidden w-[310px] mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />}
+                                    <ExplenationCard card={card} background={'white'} key={index} />
+                                </>
+                            )
+                        })
+                        }
+                    </Box>
+                }
+
             </Box>
         </Box >
 
