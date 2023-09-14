@@ -317,6 +317,7 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
             </ComponentLayout>
             <Box
                 className="hidden md:grid grid-cols-5 justify-between gap-[22px] bg-[url('https://www.datocms-assets.com/106122/1694505191-home-image-2.png')]"
+                bg={'warning20'}
                 height={'382px'}
                 px={10}
             >

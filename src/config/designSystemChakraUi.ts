@@ -120,7 +120,6 @@ export const designSystemChakraUi = {
                         transform: "scale(0.98)", //!chiedere a fedele quanto farlo scalare
 
                     },
-
                 },
             },
         },
