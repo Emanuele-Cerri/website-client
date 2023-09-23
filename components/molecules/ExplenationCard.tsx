@@ -85,6 +85,7 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                 </Text>
                 {card?.bottone && card?.bottone?.length > 0 &&
                     <Box
+                        mt={6}
                         display={'flex'}
                     >
                         <Button

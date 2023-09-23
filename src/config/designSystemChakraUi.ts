@@ -8,9 +8,14 @@ export const designSystemChakraUi = {
         inactive: '#FEE399',
         warning20: '#FFF9EA',
         warning30: '#FFF1CC',
-        blueGray: '#D0D5DD'
+        blueGray: '#D0D5DD',
+        gray700: '#2D3748'
     },
     textStyles: {
+        hero: {
+            fontSize: '42px',
+            lineHeight: '63px',
+        },
         h1: {
             fontSize: '35px',
             lineHeight: '52.5px',
@@ -50,6 +55,11 @@ export const designSystemChakraUi = {
                     h: '35px',
                     fontSize: '16px',
                     px: '20px',
+                },
+                md: {
+                    h: '45px',
+                    fontSize: '16px',
+                    px: '80px',
                 },
             },
             variants: {

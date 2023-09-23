@@ -110,23 +110,69 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     >{data?.testtesto?.buttonTitle}</Button> :
                     null
             } */}
+            <Box
+                textAlign={'center'}
+                width={['', '', '']}
+                mt={['30px', '30px', '80px']}
+                mb={['30px', '30px', '80px']}
+                mx={['24px', '24px', 0]}
+                display={'grid'}
+                gap={['16px', '16px', '32px']}
+            >
+                <Box
+                    textStyle={['h2', 'h2', 'hero']}
+                    color={'gray700'}
+                    fontWeight={'700'}
+                    className='w-10/12 lg:w-full mx-auto'
+                >
+                    Le gare d’appalto, <span
+                        className='text-[#FCB900]'
+                    >su misura per te</span>
+                </Box>
+                <Text
+                    textStyle={['h6', 'h6', 'h5']}
+                    color={'#718096'}
+                    fontWeight={['400', '400', '500']}
+                    className='w-10/12 lg:w-1/3 mx-auto '
+                >
+                    Skimming BPE è la piattaforma bla bla bla
+                    che ti permette di fare bla bla bla con chi vuoi bla bla
+                </Text>
+                <Box
+                    className='w-full mt-[32px] mb-[16px]'
+                >
+                    <Image
+                        src={
+                            'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
+                        }
+                        loading="lazy"
+                        className='w-full lg:hidden'
+                        mx={'auto'}
+                    />
+                </Box>
+                <Button
+                    variant={'primary'}
+                    fontWeight={'700'}
+                    size={['md', 'md', 'md']}
 
-            <Box position="relative">
-                <Image
-                    src="https://www.datocms-assets.com/106122/1694363206-copertina_home.png"
-                    loading="lazy"
-                    height={"45vw"}
-                    width={"full"}
-                    objectFit={"cover"}
-                />
+                    mx={'auto'}
+                >
+                    Crea una gara
+                </Button>
+
+            </Box>
+            <Box
+                className='w-full'
+            >
                 <Image
                     src={
-                        'https://www.datocms-assets.com/106122/1694366981-home-slide-1.png'
-                    } loading="lazy"
-                    width={"90vw"}
-                    objectFit={"fill"}
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                        'https://www.datocms-assets.com/106122/1695478622-group-74.png'
+                    }
+                    loading="lazy"
+                    className='hidden lg:flex lg:w-10/12'
+                    mx={'auto'}
                 />
+
             </Box>
             <Box
                 textAlign={['start', 'start', 'center']}
