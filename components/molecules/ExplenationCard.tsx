@@ -12,40 +12,31 @@ export interface ExplenationCardInterface {
     }[]
 }
 
-const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }> = ({ card, background }) => {
+const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string, iconWidth?: string, isHRHidden?: boolean }> = ({ card, background, iconWidth, isHRHidden }) => {
 
     return (
         <Box
-            display={'flex'}
+            display={['grid', 'grid', 'flex']}
             width={['', '', 'full']}
-            bg={['white', 'white', background]}
+            textAlign={'center'}
+            bg={[background, background, background]}
         >
-            <Box
-                className='flex md:hidden'
-                borderRadius={'full'}
-                h={'40px'}
-                bg={'warning20'}
-                width={'40px'}
-            >
-                <Box
-                    m={'auto'}
-                    dangerouslySetInnerHTML={{ __html: card.icon }}
-                ></Box>
-            </Box>
+
             <Box
                 p={[0, 0, '24px']}
                 width={'fit-content'}
                 pl={[3, 3, '24px']}
-                textAlign={['start', 'start', 'center']}
+                display={'grid'}
+                gap={['16px', '16px', '24px']}
             >
                 <Box
-                    className='hidden md:flex'
+                    className='flex'
                     borderRadius={'full'}
-                    h={'40px'}
-                    w={'40px'}
+                    h={iconWidth ? iconWidth : '40px'}
+                    w={iconWidth ? iconWidth : '40px'}
+
                     bg={'warning20'}
                     mx={'auto'}
-                    mb={'24px'}
                 >
                     <Box
                         m={'auto'}
@@ -65,13 +56,11 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                     >
                         {card.titolo}
                     </Text>
-                    <hr className="hidden md:flex w-[270px] mx-auto h-[1px] bg-[#FCB900] border-0 mb-[24px]" />
+                    {!isHRHidden && <hr className=" w-[270px] mx-auto h-[1px] bg-[#FCB900] border-0 mb-[0px]  lg:mb-[24px]" />}
                     {card.sottotitolo && <Text
                         textStyle={'h5'}
                         fontWeight={'600'}
                         textTransform={'uppercase'}
-                        className='hidden md:flex'
-                        mb={'24px'}
                     >
                         {card.sottotitolo}
                     </Text>}
@@ -85,15 +74,16 @@ const ExplenationCard: FC<{ card: ExplenationCardInterface, background: string }
                 </Text>
                 {card?.bottone && card?.bottone?.length > 0 &&
                     <Box
-                        mt={6}
                         display={'flex'}
                     >
                         <Button
                             variant={'tertiaryPressed'}
-                            size={'sm'}
-                            mx={[0, 0, 'auto']}
+                            size={['sm', 'sm', 'md']}
+                            fontWeight={'700'}
+                            mx={'auto'}
                             mt={['12px', '12px', 0]}
                             width={'fit-content'}
+                            bg={'transparent'}
                             rightIcon={<Box
                                 mx={'auto'}
                                 dangerouslySetInnerHTML={{ __html: card.bottone[0].icon }}

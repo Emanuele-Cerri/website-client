@@ -1,13 +1,10 @@
-import TEST_TESTO from '@/lib/apollo/dato_CMS/queries/getButtonTest';
 import GET_EXPLENATION_CARDS from '@/lib/apollo/dato_CMS/queries/getExplenationCards';
-import { useQuery } from '@apollo/client'
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import ExplenationCard, { ExplenationCardInterface } from '../../components/molecules/ExplenationCard';
-import { TIPOLOGIE_DI_LAVORO, WORK_TIPOLOGY } from '../../components/mooks/tipologieDiLavoro';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import GET_HOME_DATA from '@/lib/apollo/dato_CMS/queries/getHomeData';
 import { initApollo } from '@/lib/apollo';
+import GET_EXPLENATION_COMPONENTS_BY_TITLE from '@/lib/apollo/dato_CMS/queries/getExplenationComponentsByTitle';
+import ExplenationComponentElement, { ExplenationComponentElementInterface } from '../../components/molecules/ExplenationComponentElement';
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -17,16 +14,6 @@ export async function getStaticProps() {
     // You can use any data fetching library
     const apolloClient = initApollo();
 
-
-    const comeFunziona = await apolloClient.query({
-        query: GET_EXPLENATION_CARDS,
-        context: {
-            clientName: 'DATO_CMS_LINK',
-        },
-        variables: {
-            title: 'Come_funziona_una_gara'
-        }
-    });
     const tipologieGara = await apolloClient.query({
         query: GET_EXPLENATION_CARDS,
         context: {
@@ -43,6 +30,16 @@ export async function getStaticProps() {
         },
         variables: {
             title: 'Perche_usare_skimming',
+        }
+    });
+
+    const comeFunziona = await apolloClient.query({
+        query: GET_EXPLENATION_COMPONENTS_BY_TITLE,
+        context: {
+            clientName: 'DATO_CMS_LINK',
+        },
+        variables: {
+            title: 'HomePage_Come_Funziona'
         }
     });
 
@@ -72,8 +69,8 @@ const ComponentLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
 const ComponentTitle: FC<{ title: string, subtitle: string }> = ({ title, subtitle }) => {
     return (<Box
         display={'grid'}
-        gap={'24px'}
-        mx={['24px', '24px', 0]}
+        gap={'18px'}
+        mx={['18px', '18px', 0]}
         textAlign={['start', 'start', 'center']}
     >
         <Text
@@ -82,7 +79,7 @@ const ComponentTitle: FC<{ title: string, subtitle: string }> = ({ title, subtit
         >
             {title}
         </Text>
-        <hr className="hidden md:flex w-[270px] mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />
+        <hr className="hidden md:flex w-[270px] mx-auto h-[1px] my-[18px] bg-[#FCB900] border-0 " />
         <Text
             textStyle={'h5'}
             fontWeight={'400'}
@@ -102,20 +99,12 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
 
 
         >
-            {/* {
-                data ?
-                    <Button
-                        //colorScheme='cyan'
-                        variant={'primary'}
-                    >{data?.testtesto?.buttonTitle}</Button> :
-                    null
-            } */}
+
             <Box
                 textAlign={'center'}
-                width={['', '', '']}
                 mt={['30px', '30px', '80px']}
                 mb={['30px', '30px', '80px']}
-                mx={['24px', '24px', 0]}
+
                 display={'grid'}
                 gap={['16px', '16px', '32px']}
             >
@@ -123,7 +112,7 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     textStyle={['h2', 'h2', 'hero']}
                     color={'gray700'}
                     fontWeight={'700'}
-                    className='w-10/12 lg:w-full mx-auto'
+                    className='w-9/12 lg:w-full mx-auto'
                 >
                     Le gare d’appalto, <span
                         className='text-[#FCB900]'
@@ -133,13 +122,13 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     textStyle={['h6', 'h6', 'h5']}
                     color={'#718096'}
                     fontWeight={['400', '400', '500']}
-                    className='w-10/12 lg:w-1/3 mx-auto '
+                    className='w-11/12 lg:w-1/3 mx-auto '
                 >
                     Skimming BPE è la piattaforma bla bla bla
                     che ti permette di fare bla bla bla con chi vuoi bla bla
                 </Text>
                 <Box
-                    className='w-full mt-[32px] mb-[16px]'
+                    className=' lg:hidden mt-[32px] mb-[16px] '
                 >
                     <Image
                         src={
@@ -153,128 +142,77 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                 <Button
                     variant={'primary'}
                     fontWeight={'700'}
-                    size={['md', 'md', 'md']}
-
                     mx={'auto'}
+                    width={['80vw', '80vw', 'fit-content']}
+                    px={20}
+                    size={'md'}
                 >
                     Crea una gara
                 </Button>
 
             </Box>
             <Box
-                className='w-full'
+                className='hidden lg:flex'
             >
                 <Image
                     src={
                         'https://www.datocms-assets.com/106122/1695478622-group-74.png'
                     }
                     loading="lazy"
-                    className='hidden lg:flex lg:w-10/12'
+                    className=' lg:w-10/12'
                     mx={'auto'}
                 />
 
             </Box>
-            <Box
-                textAlign={['start', 'start', 'center']}
-                width={['', '', 'full']}
-                mt={['50px', '50px', '64px']}
-                mb={['30px', '30px', '64px']}
-                mx={['24px', '24px', 0]}
-            >
-                <Text
-                    textStyle={['h3', 'h3', 'h1']}
-                    color={'dark'}
-                    fontWeight={'700'}
-                >
-                    Sei un professionista in cerca di un’ impresa?
-                </Text>
-                <hr className="hidden md:flex w-[270px] mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />
-                <Text
-                    textStyle={['h6', 'h6', 'h3']}
-                    color={'dark'}
-                    fontWeight={['400', '400', '700']}
-                    className='hidden md:block'
-                >
-                    Crea una nuova gara con Skimming
-                </Text>
-                <Text
-                    textStyle={['h6', 'h6', 'h3']}
-                    color={'dark'}
-                    mt={'16px'}
-                    fontWeight={['400', '400', '700']}
-                    className='flex md:hidden'
-                >
-                    Skimming ti aiuta a trovare le imprese più adatte a realizzare i tuoi progetti, filtrandole per tipologia, prezzo e qualità
-                </Text>
-                {comeFunziona?.data?.explenationCardComponent.explenationCard &&
-                    <Box
-                        marginY={[12, 16, 20]}
-                        marginX={[0, 0, 20]}
-                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-[20px]'
-                    >
-                        {comeFunziona?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => {
-                            return (
-                                <>
-                                    {index > 0 && <hr className="w-[310px] md:hidden mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />}
-                                    <ExplenationCard card={card} background={'#FFF9EA'} key={index} />
-                                </>
-                            )
-                        })
-                        }
-                    </Box>
-                }
-            </Box>
-            <Button
-                variant={'primary'}
-                fontWeight={'700'}
-                size={['md', 'md', 'sm']}
-                paddingX={[12, 12, 20]}
-            >
-                Scopri l’esperienza
-            </Button>
 
-            <hr className="hidden md:flex w-[270px] mx-auto h-[1px] my-[100px] bg-[#FCB900] border-0 " />
+
+
+            {comeFunziona?.data?.explenationComponentElement.explenationComponent &&
+
+                <Box
+                    marginX={['18px', '18px', 20]}
+                    my={'220px'}
+                    className='grid gap-[260px] lg:gap-[220px]'
+                >
+                    {comeFunziona?.data?.explenationComponentElement.explenationComponent.map((element: ExplenationComponentElementInterface, index: number) => <ExplenationComponentElement element={element} key={index} index={index} />)
+                    }
+                </Box>
+
+            }
 
             <Box
                 textAlign={['start', 'start', 'center']}
                 width={['', '', 'full']}
                 mt={['45px', '45px', '64px']}
                 mb={['30px', '30px', '64px']}
-                mx={['24px', '24px', 0]}
+                px={['18px', '18px', 0]}
+                py={['40px', '40px', 0]}
+                bg={['info10', 'info10', 'white']}
             >
                 <Text
                     textStyle={'h3'}
                     color={'dark'}
                     fontWeight={'700'}
+                    className='mb-[100px] lg:mb-[0px]'
                 >
                     Scegli l’opzione migliore per creare la tua gara
                 </Text>
-                <Text
-                    textStyle={['h6', 'h6', 'h3']}
-                    color={'dark'}
-                    mt={'16px'}
-                    fontWeight={['400', '400', '700']}
-                    className='flex md:hidden'
-                >
-                    In base alla tua esprienza e alla tua confidenza con gli strumenti del settore, Skimming ti offre diverse soluzioni, scegli quella su misura per te.                </Text>
 
-                <Box
-                    className='hidden md:block'
-                >
-                    {tipologieGara?.data?.explenationCardComponent.explenationCard &&
 
-                        <Box
-                            marginY={[12, 16, 20]}
-                            marginX={[0, 0, 20]}
-                            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-[20px]'
-                        >
-                            {tipologieGara?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => <ExplenationCard card={card} background={'white'} key={index} />)
-                            }
-                        </Box>
 
-                    }
-                </Box>
-                <Box
+                {tipologieGara?.data?.explenationCardComponent.explenationCard &&
+
+                    <Box
+                        marginY={[0, 0, 12]}
+                        marginX={[0, 0, 20]}
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-[100px] lg:gap-[20px]'
+                    >
+                        {tipologieGara?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => <ExplenationCard card={card} background={'transparent'} key={index} />)
+                        }
+                    </Box>
+
+                }
+                {/*  <Box
                     className='block md:hidden my-[72px]'
                 >
                     <Accordion allowMultiple
@@ -343,22 +281,11 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                             })
                         }
                     </Accordion>
-                </Box>
+                </Box> */}
 
             </Box>
-            <Box
-                className='md:hidden '
-            >
-                <Button
-                    className='flex justify-center'
-                    variant={'tertiaryPressed'}
-                    border={'1px'}
-                    borderColor={'pressed'}
-                >
-                    Scopri di più
-                </Button>
-            </Box>
-            <ComponentLayout>
+
+            {/* <ComponentLayout>
                 <ComponentTitle title='Sei un’ impresa? Trova le gare in modo rapido, trasparente, su misura per la tua impresa' subtitle='Skimming raccoglie e mostra le gare pubblicate raccogliendole in base alla tipologia di lavoro. Scegli la categoria migliore per te e inizia il tuo prossimo progetto.' />
             </ComponentLayout>
             <Box
@@ -373,12 +300,12 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                             my={'auto'}
                             key={index}
                             borderRadius={'8px'}
-                            padding={'24px'}
+                            padding={'18px'}
                             textAlign={'center'}
                             zIndex={10}
                             bg={'white'}
                             style={{
-                                boxShadow: '0px 20px 24px -4px rgba(16, 24, 40, 0.08)',
+                                boxShadow: '0px 20px 18px -4px rgba(16, 24, 40, 0.08)',
                             }
                             }
                         >
@@ -405,10 +332,10 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                         </Box>
                     )
                 })}
-            </Box>
-            <Box
-                className="md:hidden grid gap-[24px]"
-                px={'24px'}
+            </Box> */}
+            {/* <Box
+                className="md:hidden grid gap-[18px]"
+                px={'18px'}
             >
                 {TIPOLOGIE_DI_LAVORO.map((work: WORK_TIPOLOGY, index: number) => {
                     return (
@@ -423,7 +350,7 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                             width={'full'}
                             borderColor={'blueGray'}
                             style={{
-                                boxShadow: '0px 20px 24px -4px rgba(16, 24, 40, 0.08)',
+                                boxShadow: '0px 20px 18px -4px rgba(16, 24, 40, 0.08)',
                             }}
                         >
 
@@ -465,31 +392,67 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                         </Box>
                     )
                 })}
-            </Box>
+            </Box> */}
             <ComponentLayout>
                 <ComponentTitle title='Perchè usare Skimming?' subtitle='Perché è tutto fatto in modo rapido, semplice ed efficiente; non hai più bisogno di alzare il telefono e contattare tutte le figure che ti servono per un determinato lavoro, crei il tuo cluster e al suo interno hai già tutte le figure che solitamente chiami, ti basterà creare il lavoro e loro riceveranno immediatamente una notifica e potranno presentarti il loro prezzo.' />
             </ComponentLayout>
             <Box
-                className='block'
+                className='mt-[18px]'
             >
                 {perche_usare_skimming?.data?.explenationCardComponent.explenationCard &&
                     <Box
                         marginY={[12, 16, 20]}
-                        marginX={['24px', '24px', 20]}
-                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-[20px]'
+                        marginX={['18px', '18px', 20]}
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-[20px]'
                     >
                         {perche_usare_skimming?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => {
                             return (
-                                <>
-                                    {index > 0 && <hr className="md:hidden w-[310px] mx-auto h-[1px] my-[24px] bg-[#FCB900] border-0 " />}
-                                    <ExplenationCard card={card} background={'white'} key={index} />
-                                </>
+                                <div key={index}>
+                                    {index > 0 && <hr className="md:hidden w-[310px] mx-auto h-[1px] my-[48px] bg-[#FCB900] border-0 " />}
+                                    <ExplenationCard card={card} background={'white'} iconWidth={'100px'} isHRHidden={true} />
+                                </div>
                             )
                         })
                         }
                     </Box>
                 }
+                <Box
+                    className='flex justify-center mx-[18px] lg:w-10/12 lg:mx-auto gap-[210px] my-[200px]'
+                >
+                    <Box
+                        className='lg:w-1/2 text-start my-auto grid gap-[20px]'
+                    >
+                        <Text
+                            textStyle={['h3', 'h3', 'h1']}
+                            fontWeight={'700'}
+                        >
+                            Costruiamo qualcosa di bello insieme. Contatta i nostri esperti
+                        </Text>
+                        <hr className="w-[270px] lg:w-[535px] h-[1px] bg-[#FCB900] border-0 mb-[0px] " />
+                        <Text
+                            textStyle={['h6', 'h6', 'h5']}
+                            fontWeight={'400'}
+                        >
+                            Fissa un appuntamento con il nostro team, ti guideremo passo passo alla scoperta di Skimming.
+                        </Text>
+                        <Button
+                            variant={'primary'}
+                            fontWeight={'700'}
+                            px={[12, 12, 20]}
+                            size={'md'}
+                            width={'fit-content'}
+                        >
+                            Compila il form
+                        </Button>
+                    </Box>
+                    <Image
+                        alt={''}
+                        src={'https://www.datocms-assets.com/106122/1695551722-group-10.png'}
+                        w={'280px'}
+                        className='hidden lg:flex w-1/2'
+                    />
 
+                </Box>
             </Box>
         </Box >
 
