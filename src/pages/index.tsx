@@ -122,8 +122,8 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                 </Box>
                 <Text
                     textStyle={['h6', 'h6', 'h5']}
-                    color={'#718096'}
-                    fontWeight={['400', '400', '500']}
+                    color={['#718096', '#718096', 'dark']}
+                    fontWeight={['400', '400', '600']}
                     className='w-11/12 lg:w-1/3 mx-auto '
                 >
                     Skimming BPE è la piattaforma bla bla bla
@@ -188,8 +188,9 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                 mt={['45px', '45px', '64px']}
                 mb={['30px', '30px', '64px']}
                 px={['18px', '18px', 0]}
-                py={['40px', '40px', 0]}
-                bg={['info10', 'info10', 'white']}
+                pt={'80px'}
+                pb={['80px', '80px', '20px']}
+                bg={['info10', 'info10', 'info10']}
             >
                 <Text
                     textStyle={'h3'}
