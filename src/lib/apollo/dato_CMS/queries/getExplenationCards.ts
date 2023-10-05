@@ -8,9 +8,13 @@ query explenationCardComponent($title: String!) {
       titolo
       explenationCard{
         titolo
+        redirectUrl
         sottotitolo
         descrizione
         icon
+        image{
+          url
+        }
         bottone{
           text
           icon

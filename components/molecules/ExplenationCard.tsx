@@ -4,6 +4,10 @@ import React, { FC } from 'react'
 export interface ExplenationCardInterface {
     titolo: string,
     sottotitolo?: string,
+    image?: {
+        url: string
+    }
+    redirectUrl: string
     descrizione: string,
     icon: any,
     bottone?: {

@@ -48,7 +48,7 @@ export default function Header() {
                         className='hidden lg:flex items-center gap-[46px]'
                     >
                         <Link
-                            href={"/"}
+                            href={"/come-funziona"}
                             onMouseEnter={disablePanels}
                         >
                             <Text
@@ -58,6 +58,7 @@ export default function Header() {
                             >
                                 Come funziona
                             </Text>
+
                         </Link>
 
                         <Box

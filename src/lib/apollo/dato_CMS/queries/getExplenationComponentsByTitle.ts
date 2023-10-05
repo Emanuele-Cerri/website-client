@@ -15,6 +15,10 @@ query explenationComponentElement($title: String!) {
           immagineDesktop{
             url
           }
+          button{
+            text
+            icon
+          }
         }
     }
   }

@@ -1,4 +1,4 @@
-import { Box, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 
 export interface ExplenationComponentElementInterface {
@@ -10,7 +10,7 @@ export interface ExplenationComponentElementInterface {
     immagineDevice: {
         url: string
     },
-    bottone?: {
+    button?: {
         text: string,
         icon: any
     }[]
@@ -18,7 +18,6 @@ export interface ExplenationComponentElementInterface {
 
 const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInterface, index: number }> = ({ element, index }) => {
     console.log(element);
-
     return (
         <Box
             className='grid gap-[30px] lg:flex lg:justify-between  mx-auto'
@@ -46,6 +45,24 @@ const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInte
                 >
                     {element.sottotitolo}
                 </Text>
+                {element?.button?.[0] &&
+                    <Box
+                        className='hidden lg:flex'
+
+                    >
+                        <Button
+                            variant={'primary'}
+                            fontWeight={'700'}
+                            mx={'auto'}
+                            width={['80vw', '80vw', 'fit-content']}
+                            px={20}
+                            size={'md'}
+                            mt={'40px'}
+                        >
+                            {element.button[0].text}
+                        </Button>
+                    </Box>
+                }
             </Box>
             {index % 2 === 0 && <Image
                 alt={''}
