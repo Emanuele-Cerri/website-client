@@ -2,7 +2,7 @@ import { Box, Button, Image, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { ExplenationComponentElementInterface } from './ExplenationComponentElement'
 
-const FormComponent = () => {
+const FormComponent: FC<{ title: string | JSX.Element, subtitle: string, buttonText: string, imageUrl: string }> = ({ title, subtitle, buttonText, imageUrl }) => {
     return (
         <Box
             className='grid gap-[10px] lg:gap-[30px] lg:flex lg:justify-between  mx-auto'
@@ -15,18 +15,19 @@ const FormComponent = () => {
             <Box
                 className='w-full lg:w-5/12 text-start my-auto'
             >
-                <Text
+                <Box
                     textStyle={['h3', 'h3', 'h1']}
                     fontWeight={'700'}
                     mb={['16px', '16px', '40px']}
+                    dangerouslySetInnerHTML={{ __html: title }}
                 >
-                    Tutto inizia con una stretta di mano. Scegli il vincitore
-                </Text>
+
+                </Box>
                 <Text
                     textStyle={['h6', 'h6', 'h5']}
                     fontWeight={'400'}
                 >
-                    Seleziona l’impresa vincitrice e comincia i lavori
+                    {subtitle}
                 </Text>
 
                 <Box
@@ -40,14 +41,14 @@ const FormComponent = () => {
                         size={'md'}
                         mt={'40px'}
                     >
-                        Crea una gara
+                        {buttonText}
                     </Button>
                 </Box>
 
             </Box>
             <Image
                 alt={''}
-                src={'https://www.datocms-assets.com/106122/1695547167-group-63.png'}
+                src={imageUrl}
                 objectFit={"fill"}
                 className='hidden lg:flex w-1/2'
             />
@@ -63,7 +64,7 @@ const FormComponent = () => {
                     size={'md'}
                     mt={'10px'}
                 >
-                    Crea una gara
+                    {buttonText}
                 </Button>
             </Box>
         </Box>

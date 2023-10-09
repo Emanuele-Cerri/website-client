@@ -44,13 +44,24 @@ export async function getStaticProps() {
         }
     });
 
+    const assistenzaLegale = await apolloClient.query({
+        query: GET_EXPLENATION_COMPONENTS_BY_TITLE,
+        context: {
+            clientName: 'DATO_CMS_LINK',
+        },
+        variables: {
+            title: 'HomePage_Assistenza'
+        }
+    });
+
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
     return {
         props: {
             comeFunziona,
             tipologieGara,
-            perche_usare_skimming
+            perche_usare_skimming,
+            assistenzaLegale
         },
     }
 }
@@ -68,6 +79,8 @@ const ComponentLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
 }
 
 const ComponentTitle: FC<{ title: string, subtitle: string }> = ({ title, subtitle }) => {
+
+
     return (
         <Box
             display={'grid'}
@@ -92,7 +105,7 @@ const ComponentTitle: FC<{ title: string, subtitle: string }> = ({ title, subtit
 }
 
 
-const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skimming: any }> = ({ comeFunziona, tipologieGara, perche_usare_skimming }) => {
+const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skimming: any, assistenzaLegale: any }> = ({ comeFunziona, tipologieGara, perche_usare_skimming, assistenzaLegale }) => {
 
 
 
@@ -419,13 +432,31 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                         }
                     </Box>
                 }
-                <Box
-                    className='flex justify-center mx-[18px] lg:w-10/12 lg:mx-auto gap-[210px] my-[200px]'
+            </Box>
+            <ComponentLayout>
+                <ComponentTitle title='Con Skimming non sei mai da solo' subtitle='lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo' />
+            </ComponentLayout>
+            <Box
+                className='mt-[18px]'
+            >
+                {assistenzaLegale?.data?.explenationComponentElement.explenationComponent &&
 
-                >
-                    <CompileFormComponent />
+                    <Box
+                        marginX={['18px', '18px', 20]}
+                        my={'220px'}
+                        className='grid gap-[260px] lg:gap-[220px]'
+                    >
+                        {assistenzaLegale?.data?.explenationComponentElement.explenationComponent.map((element: ExplenationComponentElementInterface, index: number) => <ExplenationComponentElement element={element} key={index} index={index} />)
+                        }
+                    </Box>
 
-                </Box>
+                }
+
+            </Box>
+            <Box
+                className='flex justify-center mx-[18px] lg:w-10/12 lg:mx-auto gap-[210px] my-[200px]'
+            >
+                <CompileFormComponent />
             </Box>
         </Box >
 

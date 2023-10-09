@@ -35,7 +35,6 @@ export async function getStaticProps() {
 
 const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come_funziona_profili }) => {
 
-    console.log(Come_funziona_profili);
 
 
     return (
@@ -105,7 +104,7 @@ const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come
                             style={{
                                 boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
                             }}
-                            className='w-full lg:w-[260px] 2xl:w-[280px]'
+                            className='w-full lg:w-[280px] 2xl:w-[300px]'
                             cursor={'pointer'}
                             _active={{
                                 transform: 'scale(0.99)',

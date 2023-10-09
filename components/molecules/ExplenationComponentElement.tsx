@@ -17,7 +17,6 @@ export interface ExplenationComponentElementInterface {
 }
 
 const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInterface, index: number }> = ({ element, index }) => {
-    console.log(element);
     return (
         <Box
             className='grid gap-[30px] lg:flex lg:justify-between  mx-auto'
@@ -32,13 +31,14 @@ const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInte
             <Box
                 className='w-full lg:w-5/12 text-start my-auto'
             >
-                <Text
+                <Box
                     textStyle={['h3', 'h3', 'h1']}
                     fontWeight={'700'}
                     mb={['16px', '16px', '40px']}
+                    dangerouslySetInnerHTML={{ __html: element.titolo }}
                 >
-                    {element.titolo}
-                </Text>
+
+                </Box>
                 <Text
                     textStyle={['h6', 'h6', 'h5']}
                     fontWeight={'400'}
@@ -72,7 +72,7 @@ const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInte
             />}
             <Image
                 alt={''}
-                src={element.immagineDevice.url}
+                src={element.immagineDevice?.url}
                 className='lg:hidden w-full'
             />
 
