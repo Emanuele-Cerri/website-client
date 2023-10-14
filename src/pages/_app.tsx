@@ -23,8 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <main className={open_sans.className}>
 
                 <ChakraProvider theme={theme}>
-
-
                     <Header />
                     <Component  {...pageProps} />
                     <Footer />

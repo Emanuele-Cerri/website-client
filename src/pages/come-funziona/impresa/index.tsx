@@ -2,7 +2,7 @@ import { initApollo } from '@/lib/apollo';
 import GET_EXPLENATION_COMPONENTS_BY_TITLE from '@/lib/apollo/dato_CMS/queries/getExplenationComponentsByTitle';
 import React, { FC } from 'react'
 import ExplenationComponentElement, { ExplenationComponentElementInterface } from '../../../../components/molecules/ExplenationComponentElement';
-import { Box } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 import ExplenationCard from '../../../../components/molecules/ExplenationCard';
 import FormComponent from '../../../../components/molecules/FormComponent';
 import StartComponent from '../../../../components/molecules/StartComponent';
@@ -38,6 +38,13 @@ const index: FC<{ explenation_Impresa: ExplenationComponentElementInterface[] }>
 
     return (
         <>
+            <Image
+                width={820}
+                height={800}
+                src={'https://www.datocms-assets.com/106122/1697277987-group-2.png'}
+                alt='gru'
+                className='hidden lg:flex absolute top-[100px] left-[80px] right-0 -z-10'
+            ></Image>
             <StartComponent
                 element={{
                     titolo: 'Ogni nuovo lavoro è una sfida, trova quella giusta per la tua impresa',

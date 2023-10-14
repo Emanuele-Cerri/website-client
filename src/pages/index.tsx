@@ -139,8 +139,8 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     fontWeight={['400', '400', '600']}
                     className='w-11/12 lg:w-1/3 mx-auto '
                 >
-                    Skimming BPE è la piattaforma bla bla bla
-                    che ti permette di fare bla bla bla con chi vuoi bla bla
+                    Skimming BPE è una piattaforma innovativa
+                    che ti permette di creare e gestire gare d’appalto private in pochi click
                 </Text>
                 <Box
                     className=' lg:hidden mt-[32px] mb-[16px] '

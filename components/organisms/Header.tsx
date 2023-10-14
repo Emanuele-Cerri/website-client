@@ -4,13 +4,14 @@ import { Menu, NavArrowDown } from 'iconoir-react'
 import { useRef, useState } from 'react'
 import ServiziMenu from '../molecules/ServiziMenu'
 import { SERVIZI, VETRINA_AZIENDALE } from '../mooks/servizi'
+import { useRouter } from 'next/router'
 
 export default function Header() {
     const [panelServizi, setPanelServizi] = useState(false)
     const [panelVetrinaAziendale, setPanelVetrinaAziendale] = useState(false)
     const servizi = useRef(SERVIZI)
     const vetrinaAziendale = useRef(VETRINA_AZIENDALE)
-
+    const router = useRouter()
 
     const disablePanels = () => {
         setPanelServizi(false)
@@ -45,14 +46,18 @@ export default function Header() {
                         </button>
                     </div>
                     <Box
-                        className='hidden lg:flex items-center gap-[46px]'
+                        className='hidden lg:flex items-center gap-[26px]'
                     >
                         <Link
                             href={"/come-funziona"}
                             onMouseEnter={disablePanels}
+
                         >
                             <Text
-                                color={'dark'}
+                                color={router.asPath.includes('/come-funziona') ? 'pressed' : 'dark'}
+                                bg={router.asPath.includes('/come-funziona') ? 'warning30' : 'none'}
+                                p={'5px'}
+                                px={'10px'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
                             >
@@ -71,12 +76,16 @@ export default function Header() {
                                 }
                                 setPanelServizi(true)
                             }}
+                            bg={router.asPath.includes('/servizi') ? 'warning30' : 'none'}
+                            p={'5px'}
+                            px={'10px'}
+                            color={'dark'}
                         >
                             <Text
-                                color={'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
                                 my={'auto'}
+
                             >
                                 Servizi
                             </Text>
@@ -92,6 +101,9 @@ export default function Header() {
                             onMouseEnter={disablePanels}
                         >
                             <Text
+                                bg={router.asPath.includes('/prezzi') ? 'warning30' : 'none'}
+                                p={'5px'}
+                                px={'10px'}
                                 color={'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
@@ -108,9 +120,13 @@ export default function Header() {
                                 }
                                 setPanelVetrinaAziendale(true)
                             }}
+                            bg={router.asPath.includes('/vetrina-aziendale') ? 'warning30' : 'none'}
+                            p={'5px'}
+                            px={'10px'}
+                            color={'dark'}
+
                         >
                             <Text
-                                color={'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
                                 my={'auto'}
@@ -129,6 +145,9 @@ export default function Header() {
                             onMouseEnter={disablePanels}
                         >
                             <Text
+                                bg={router.asPath.includes('/blog') ? 'warning30' : 'none'}
+                                p={'5px'}
+                                px={'10px'}
                                 color={'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}

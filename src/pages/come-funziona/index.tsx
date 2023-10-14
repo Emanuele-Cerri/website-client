@@ -1,6 +1,6 @@
 import { initApollo } from '@/lib/apollo';
 import GET_EXPLENATION_CARDS from '@/lib/apollo/dato_CMS/queries/getExplenationCards';
-import { Box, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Stack, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { ExplenationCardInterface } from '../../../components/molecules/ExplenationCard';
 import CompileFormComponent from '../../../components/molecules/CompileFormComponent';
@@ -10,8 +10,6 @@ export async function getStaticProps() {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
     const apolloClient = initApollo();
-
-
     const Come_funziona_profili = await apolloClient.query({
         query: GET_EXPLENATION_CARDS,
         context: {
@@ -21,8 +19,6 @@ export async function getStaticProps() {
             title: 'Come_funziona_profili',
         }
     });
-
-
 
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
@@ -98,8 +94,9 @@ const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come
                         href={card.redirectUrl}
                     >
                         <Box
-
+                            textAlign={'center'}
                             borderRadius={'8px'}
+                            borderWidth={'1px'}
                             borderColor={'blueGray'}
                             style={{
                                 boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
@@ -113,17 +110,17 @@ const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come
                             <Image
                                 borderTopRadius={'8px'}
                                 /* brightness-50 lg:brightness-100  */
-                                className='w-full hidden lg:grid '
+                                className='hidden lg:grid mx-auto pt-[24px]'
+                                height={'230px'}
+                                objectFit={'fill'}
                                 src={card.image?.url}
-
                             />
                             <Box
                                 p={'24px'}
                                 textAlign={'center'}
-
                             >
                                 <Box
-                                    className='flex'
+                                    className='flex lg:hidden'
                                     borderRadius={'full'}
                                     h={'40px'}
                                     w={'40px'}
@@ -151,6 +148,14 @@ const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come
                                 >
                                     {card.sottotitolo}
                                 </Text>
+                                <Box
+                                    mt={'32px'}
+                                    color={'pressed'}
+                                    textStyle={'h5'}
+                                    fontWeight={'600'}
+                                >
+                                    Scopri di più
+                                </Box>
                             </Box>
 
                         </Box>

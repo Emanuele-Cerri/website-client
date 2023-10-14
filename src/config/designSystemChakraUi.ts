@@ -58,7 +58,7 @@ export const designSystemChakraUi = {
                     px: '20px',
                 },
                 md: {
-                    h: ['50px', '45px'],
+                    h: ['45px', '45px'],
                     fontSize: '16px',
                     px: '20px',
                 },

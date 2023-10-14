@@ -12,7 +12,7 @@ type Props = {
 const StartComponent: React.FC<{ element: Props }> = ({ element }) => {
     return (
         <Box
-            className='grid gap-[30px] lg:flex lg:justify-between  mx-auto lg:mt-[120px] mb-[260px] lg:mb-[220px]'
+            className='grid gap-[30px] lg:flex lg:justify-between  mx-auto lg:mt-[160px] mb-[260px] lg:mb-[220px]'
             px={['0', '0', 20]}
 
         >

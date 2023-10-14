@@ -2,7 +2,7 @@ import { initApollo } from '@/lib/apollo';
 import GET_EXPLENATION_COMPONENTS_BY_TITLE from '@/lib/apollo/dato_CMS/queries/getExplenationComponentsByTitle';
 import React, { FC } from 'react'
 import ExplenationComponentElement, { ExplenationComponentElementInterface } from '../../../../components/molecules/ExplenationComponentElement';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Button, Image, Text } from '@chakra-ui/react';
 import ExplenationCard from '../../../../components/molecules/ExplenationCard';
 import FormComponent from '../../../../components/molecules/FormComponent';
 import StartComponent from '../../../../components/molecules/StartComponent';
@@ -38,17 +38,25 @@ const index: FC<{ explenation_Progettista: ExplenationComponentElementInterface[
 
     return (
         <>
+
+            <Image
+                width={820}
+                height={800}
+                src={'https://www.datocms-assets.com/106122/1697277987-group-2.png'}
+                alt='gru'
+                className='hidden lg:flex absolute top-[100px] left-[80px] right-0 -z-10'
+            >
+            </Image>
             <StartComponent
                 element={{
                     titolo: 'Realizza il tuo progetto con chi se ne intende davvero',
                     sottotitolo: 'Con Skimming trovi le imprese migliori e sei in pieno controllo di tutta la gara d’appalto',
-                    immagineDesktop: 'https://www.datocms-assets.com/106122/1695905746-group-46.png',
+                    immagineDesktop: 'https://www.datocms-assets.com/106122/1697271856-group-79-1.png',
                     imageDevice: 'https://www.datocms-assets.com/106122/1696856417-group-90-1.png',
                     buttonText: 'Iniziamo!'
                 }}
             />
             {explenation_Progettista &&
-
                 <Box
                     marginX={['18px', '18px', 20]}
                     mb={'520px'}
