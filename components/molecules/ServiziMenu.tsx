@@ -29,6 +29,7 @@ const ServiziMenu: FC<{ elements: Servizio[] }> = ({ elements }) => {
                 {elements.map((servizio, index) => {
                     return (
                         <MenuItem
+                            key={index}
                             link={!servizio.schema.elements ? servizio.schema.elementLink : null}
                             servizio={servizio}
                             HandleMouseEnterEvent={() => {
