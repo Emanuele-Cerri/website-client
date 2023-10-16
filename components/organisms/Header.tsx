@@ -60,6 +60,9 @@ export default function Header() {
                                 px={'10px'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
+                                _active={{
+                                    transform: 'scale(0.98)',
+                                }}
                             >
                                 Come funziona
                             </Text>
@@ -97,19 +100,25 @@ export default function Header() {
                         </Box>
 
                         <Link
-                            href={"/"}
+                            href={"/prezzi"}
                             onMouseEnter={disablePanels}
                         >
+
                             <Text
                                 bg={router.asPath.includes('/prezzi') ? 'warning30' : 'none'}
                                 p={'5px'}
                                 px={'10px'}
-                                color={'dark'}
+                                color={router.asPath.includes('/prezzi') ? 'pressed' : 'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
+                                _active={{
+                                    transform: 'scale(0.98)',
+                                }}
+
                             >
                                 Prezzi
                             </Text>
+
                         </Link>
                         <Box
                             display={'flex'}
@@ -129,6 +138,7 @@ export default function Header() {
                             <Text
                                 textStyle='h5'
                                 fontWeight={'semibold'}
+
                                 my={'auto'}
                                 cursor={'pointer'}
                             >
@@ -151,6 +161,9 @@ export default function Header() {
                                 color={'dark'}
                                 textStyle='h5'
                                 fontWeight={'semibold'}
+                                _active={{
+                                    transform: 'scale(0.98)',
+                                }}
                             >
                                 Blog
                             </Text>
@@ -162,6 +175,9 @@ export default function Header() {
                         <Button
                             variant={'tertiary'}
                             fontWeight={'semibold'}
+                            _active={{
+                                transform: 'scale(0.98)',
+                            }}
                             size={'sm'}
                         >
                             Accedi
@@ -189,6 +205,9 @@ export default function Header() {
                     color={'base'}
                     textStyle={'h5'}
                     fontWeight={'semibold'}
+                    _active={{
+                        transform: 'scale(0.98)',
+                    }}
                     my={4}
                     mb={6}
                 >
@@ -210,6 +229,9 @@ export default function Header() {
                     color={'base'}
                     textStyle={'h5'}
                     fontWeight={'semibold'}
+                    _active={{
+                        transform: 'scale(0.98)',
+                    }}
                     my={4}
                     mb={6}
                 >

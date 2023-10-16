@@ -49,7 +49,7 @@ const FormComponent: FC<{ title: string | JSX.Element, subtitle: string, buttonT
             <Image
                 alt={''}
                 src={imageUrl}
-                objectFit={"fill"}
+                objectFit={"contain"}
                 className='hidden lg:flex w-1/2'
             />
 
