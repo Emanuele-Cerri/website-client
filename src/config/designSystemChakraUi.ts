@@ -1,4 +1,12 @@
 export const designSystemChakraUi = {
+    breakpoints: {
+        base: "320px",
+        sm: "640px",
+        md: "768px",
+        lg: "960px",
+        xl: "1280px",
+        "2xl": "1536px",
+    },
     colors: {
         dark: '#151515',
         darkGrey: '#757575',
@@ -10,7 +18,10 @@ export const designSystemChakraUi = {
         warning30: '#FFF1CC',
         blueGray: '#D0D5DD',
         gray700: '#2D3748',
-        info10: '#F6FBFF'
+        info10: '#F6FBFF',
+        lightGrey: '#EEEEEE',
+        success: '#1DB954',
+        success30: '#BBEACC'
     },
     textStyles: {
         hero: {

@@ -6,6 +6,8 @@ import { initApollo } from '@/lib/apollo';
 import GET_EXPLENATION_COMPONENTS_BY_TITLE from '@/lib/apollo/dato_CMS/queries/getExplenationComponentsByTitle';
 import ExplenationComponentElement, { ExplenationComponentElementInterface } from '../../components/molecules/ExplenationComponentElement';
 import CompileFormComponent from '../../components/molecules/CompileFormComponent';
+import FadeInWhenVisible from '../../components/atoms/FadeInWhenVisible';
+import BoxWidth from '../../components/atoms/BoxWidth';
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -111,8 +113,6 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
 
     return (
         <Box className='min-h-[150vh] text-center mb-[280px]'
-
-
         >
 
             <Box
@@ -145,14 +145,17 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                 <Box
                     className=' lg:hidden mt-[32px] mb-[16px] '
                 >
-                    <Image
-                        src={
-                            'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
-                        }
-                        loading="lazy"
-                        className='w-full lg:hidden'
-                        mx={'auto'}
-                    />
+                    <FadeInWhenVisible>
+                        <Image
+                            src={
+                                'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
+                            }
+                            loading="lazy"
+                            className='w-full lg:hidden'
+                            mx={'auto'}
+                        />
+                    </FadeInWhenVisible>
+
                 </Box>
                 <Button
                     variant={'primary'}
@@ -169,29 +172,28 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
             <Box
                 className='hidden lg:flex'
             >
-                <Image
-                    src={
-                        'https://www.datocms-assets.com/106122/1695478622-group-74.png'
-                    }
-                    loading="lazy"
-                    className=' lg:w-10/12'
-                    mx={'auto'}
-                />
+                <FadeInWhenVisible>
+                    <Image
+                        src={
+                            'https://www.datocms-assets.com/106122/1695478622-group-74.png'
+                        }
+                        loading="lazy"
+                        className=' lg:w-10/12'
+                        mx={'auto'}
+                    />
+                </FadeInWhenVisible>
 
             </Box>
 
 
 
             {comeFunziona?.data?.explenationComponentElement.explenationComponent &&
-
-                <Box
-                    marginX={['18px', '18px', 20]}
-                    my={'220px'}
-                    className='grid gap-[260px] lg:gap-[220px]'
+                <BoxWidth
+                    className='grid gap-[260px] lg:gap-[220px] my-[220px]'
                 >
                     {comeFunziona?.data?.explenationComponentElement.explenationComponent.map((element: ExplenationComponentElementInterface, index: number) => <ExplenationComponentElement element={element} key={index} index={index} />)
                     }
-                </Box>
+                </BoxWidth>
 
             }
 
@@ -416,10 +418,8 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                 className='mt-[18px]'
             >
                 {perche_usare_skimming?.data?.explenationCardComponent.explenationCard &&
-                    <Box
-                        marginY={[12, 16, 20]}
-                        marginX={['18px', '18px', 20]}
-                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-[20px]'
+                    <BoxWidth
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-[20px] my-12 sm:my-16 md:my-20'
                     >
                         {perche_usare_skimming?.data?.explenationCardComponent.explenationCard.map((card: ExplenationCardInterface, index: number) => {
                             return (
@@ -430,7 +430,7 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                             )
                         })
                         }
-                    </Box>
+                    </BoxWidth>
                 }
             </Box>
             <ComponentLayout>
@@ -441,14 +441,12 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
             >
                 {assistenzaLegale?.data?.explenationComponentElement.explenationComponent &&
 
-                    <Box
-                        marginX={['18px', '18px', 20]}
-                        my={'220px'}
-                        className='grid gap-[260px] lg:gap-[220px]'
+                    <BoxWidth
+                        className='grid gap-[260px] lg:gap-[220px] my-[220px]'
                     >
                         {assistenzaLegale?.data?.explenationComponentElement.explenationComponent.map((element: ExplenationComponentElementInterface, index: number) => <ExplenationComponentElement element={element} key={index} index={index} />)
                         }
-                    </Box>
+                    </BoxWidth>
 
                 }
 

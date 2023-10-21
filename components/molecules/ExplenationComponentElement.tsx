@@ -1,5 +1,6 @@
 import { Box, Button, Image, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
+import FadeInWhenVisible from '../atoms/FadeInWhenVisible'
 
 export interface ExplenationComponentElementInterface {
     titolo: string,
@@ -18,65 +19,73 @@ export interface ExplenationComponentElementInterface {
 
 const ExplenationComponentElement: FC<{ element: ExplenationComponentElementInterface, index: number }> = ({ element, index }) => {
     return (
-        <Box
-            className='grid gap-[30px] lg:flex lg:justify-between  mx-auto'
+        <FadeInWhenVisible
+            initialStateY='4%'
         >
-
-            {index % 2 !== 0 && <Image
-                alt={''}
-                objectFit={"fill"}
-                src={element.immagineDesktop.url}
-                className='hidden lg:flex w-1/2'
-            />}
             <Box
-                className='w-full lg:w-5/12 text-start my-auto'
+                className='grid gap-[30px] lg:flex lg:justify-between  mx-auto'
             >
+
+                {index % 2 !== 0 && <Image
+                    alt={''}
+                    src={element.immagineDesktop.url}
+                    className='hidden lg:flex w-6/12 h-fit'
+                />}
+                {index % 2 === 0 && <Image
+                    alt={''}
+                    src={element.immagineDevice?.url}
+                    className='lg:hidden w-full'
+                />}
                 <Box
-                    textStyle={['h3', 'h3', 'h1']}
-                    fontWeight={'700'}
-                    mb={['16px', '16px', '40px']}
-                    dangerouslySetInnerHTML={{ __html: element.titolo }}
+                    className='w-full lg:w-5/12 text-start my-auto'
                 >
-
-                </Box>
-                <Text
-                    textStyle={['h6', 'h6', 'h5']}
-                    fontWeight={'400'}
-                >
-                    {element.sottotitolo}
-                </Text>
-                {element?.button?.[0] &&
                     <Box
-                        className='hidden lg:flex'
-
+                        textStyle={['h3', 'h3', 'h1']}
+                        fontWeight={'700'}
+                        mb={['16px', '16px', '40px']}
+                        dangerouslySetInnerHTML={{ __html: element.titolo }}
                     >
-                        <Button
-                            variant={'primary'}
-                            fontWeight={'700'}
-                            mx={'auto'}
-                            width={['80vw', '80vw', 'fit-content']}
-                            px={20}
-                            size={'md'}
-                            mt={'40px'}
-                        >
-                            {element.button[0].text}
-                        </Button>
-                    </Box>
-                }
-            </Box>
-            {index % 2 === 0 && <Image
-                alt={''}
-                src={element.immagineDesktop.url}
-                objectFit={"fill"}
-                className='hidden lg:flex w-1/2'
-            />}
-            <Image
-                alt={''}
-                src={element.immagineDevice?.url}
-                className='lg:hidden w-full'
-            />
 
-        </Box>
+                    </Box>
+                    <Text
+                        textStyle={['h6', 'h6', 'h5']}
+                        fontWeight={'400'}
+                    >
+                        {element.sottotitolo}
+                    </Text>
+                    {element?.button?.[0] &&
+                        <Box
+                            className='hidden lg:flex'
+
+                        >
+                            <Button
+                                variant={'primary'}
+                                fontWeight={'700'}
+                                mx={'auto'}
+                                width={['80vw', '80vw', 'fit-content']}
+                                px={20}
+                                size={'md'}
+                                mt={'40px'}
+                            >
+                                {element.button[0].text}
+                            </Button>
+                        </Box>
+                    }
+                </Box>
+                {index % 2 === 0 && <Image
+                    alt={''}
+                    src={element.immagineDesktop.url}
+                    className='hidden lg:flex w-6/12 h-fit'
+                />}
+                {index % 2 !== 0 && <Image
+                    alt={''}
+                    src={element.immagineDevice?.url}
+                    className='lg:hidden w-full'
+                />}
+
+            </Box>
+        </FadeInWhenVisible>
+
     )
 }
 

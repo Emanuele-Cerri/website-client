@@ -5,6 +5,7 @@ import React, { FC } from 'react'
 import { ExplenationCardInterface } from '../../../components/molecules/ExplenationCard';
 import CompileFormComponent from '../../../components/molecules/CompileFormComponent';
 import Link from 'next/link';
+import FadeInWhenVisible from '../../../components/atoms/FadeInWhenVisible';
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts.
@@ -89,77 +90,82 @@ const index: FC<{ Come_funziona_profili: ExplenationCardInterface[] }> = ({ Come
                 className='grid gap-10 lg:gap-20 lg:flex px-[20px] lg:px-0 w-full'
             >
                 {Come_funziona_profili.map((card, index) => (
-                    <Link
-                        key={index}
-                        href={card.redirectUrl}
+                    <FadeInWhenVisible
+                        initialStateY='8%'
                     >
-                        <Box
-                            textAlign={'center'}
-                            borderRadius={'8px'}
-                            borderWidth={'1px'}
-                            borderColor={'blueGray'}
-                            style={{
-                                boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
-                            }}
-                            className='w-full lg:w-[280px] 2xl:w-[300px]'
-                            cursor={'pointer'}
-                            _active={{
-                                transform: 'scale(0.99)',
-                            }}
+                        <Link
+                            key={index}
+                            href={card.redirectUrl}
                         >
-                            <Image
-                                borderTopRadius={'8px'}
-                                /* brightness-50 lg:brightness-100  */
-                                className='hidden lg:grid mx-auto pt-[24px]'
-                                height={'230px'}
-                                objectFit={'fill'}
-                                src={card.image?.url}
-                            />
                             <Box
-                                p={'24px'}
                                 textAlign={'center'}
+                                borderRadius={'8px'}
+                                borderWidth={'1px'}
+                                borderColor={'blueGray'}
+                                style={{
+                                    boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
+                                }}
+                                className='w-full lg:w-[280px] 2xl:w-[300px]'
+                                cursor={'pointer'}
+                                _active={{
+                                    transform: 'scale(0.99)',
+                                }}
                             >
+                                <Image
+                                    borderTopRadius={'8px'}
+                                    /* brightness-50 lg:brightness-100  */
+                                    className='hidden lg:grid mx-auto pt-[24px]'
+                                    height={'230px'}
+                                    objectFit={'fill'}
+                                    src={card.image?.url}
+                                />
                                 <Box
-                                    className='flex lg:hidden'
-                                    borderRadius={'full'}
-                                    h={'40px'}
-                                    w={'40px'}
-                                    bg={'warning20'}
-                                    mx={'auto'}
-                                    mb={'10px'}
+                                    p={'24px'}
+                                    textAlign={'center'}
                                 >
                                     <Box
-                                        m={'auto'}
-                                        dangerouslySetInnerHTML={{ __html: card.icon }}
-                                    ></Box>
+                                        className='flex lg:hidden'
+                                        borderRadius={'full'}
+                                        h={'40px'}
+                                        w={'40px'}
+                                        bg={'warning20'}
+                                        mx={'auto'}
+                                        mb={'10px'}
+                                    >
+                                        <Box
+                                            m={'auto'}
+                                            dangerouslySetInnerHTML={{ __html: card.icon }}
+                                        ></Box>
+                                    </Box>
+                                    <Text
+                                        textStyle={'h3'}
+                                        fontWeight={'700'}
+                                        color={'dark'}
+                                    >
+                                        {card.titolo}
+                                    </Text>
+                                    <hr className="w-[220px] h-[1px] my-[12px] bg-[#FCB900] mx-auto " />
+                                    <Text
+                                        textStyle={'h6'}
+                                        fontWeight={'400'}
+                                        color={'dark'}
+                                    >
+                                        {card.sottotitolo}
+                                    </Text>
+                                    <Box
+                                        mt={'32px'}
+                                        color={'pressed'}
+                                        textStyle={'h5'}
+                                        fontWeight={'600'}
+                                    >
+                                        Scopri di più
+                                    </Box>
                                 </Box>
-                                <Text
-                                    textStyle={'h3'}
-                                    fontWeight={'700'}
-                                    color={'dark'}
-                                >
-                                    {card.titolo}
-                                </Text>
-                                <hr className="w-[220px] h-[1px] my-[12px] bg-[#FCB900] mx-auto " />
-                                <Text
-                                    textStyle={'h6'}
-                                    fontWeight={'400'}
-                                    color={'dark'}
-                                >
-                                    {card.sottotitolo}
-                                </Text>
-                                <Box
-                                    mt={'32px'}
-                                    color={'pressed'}
-                                    textStyle={'h5'}
-                                    fontWeight={'600'}
-                                >
-                                    Scopri di più
-                                </Box>
-                            </Box>
 
-                        </Box>
-                    </Link>
+                            </Box>
+                        </Link>
+                    </FadeInWhenVisible>
+
                 ))}
 
             </Box >

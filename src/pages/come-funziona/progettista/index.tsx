@@ -7,6 +7,9 @@ import ExplenationCard from '../../../../components/molecules/ExplenationCard';
 import FormComponent from '../../../../components/molecules/FormComponent';
 import StartComponent from '../../../../components/molecules/StartComponent';
 import NonHaiTrovatoQuelloCheCercavi from '../../../../components/molecules/NonHaiTrovatoQuelloCheCercavi';
+import FadeInWhenVisible from '../../../../components/atoms/FadeInWhenVisible';
+import DocumentsComponent from '../../../../components/molecules/DocumentsComponent';
+import BoxWidth from '../../../../components/atoms/BoxWidth';
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts.
@@ -47,6 +50,7 @@ const index: FC<{ explenation_Progettista: ExplenationComponentElementInterface[
                 className='hidden lg:flex absolute top-[100px] left-[80px] right-0 -z-10'
             >
             </Image>
+
             <StartComponent
                 element={{
                     titolo: 'Realizza il tuo progetto con chi se ne intende davvero',
@@ -57,9 +61,7 @@ const index: FC<{ explenation_Progettista: ExplenationComponentElementInterface[
                 }}
             />
             {explenation_Progettista &&
-                <Box
-                    marginX={['18px', '18px', 20]}
-                    mb={'520px'}
+                <BoxWidth
                     className='grid gap-[260px] lg:gap-[220px] '
 
                 >
@@ -73,8 +75,9 @@ const index: FC<{ explenation_Progettista: ExplenationComponentElementInterface[
                         imageUrl='https://www.datocms-assets.com/106122/1695547167-group-63.png'
                     />
 
-                </Box>
+                </BoxWidth>
             }
+            <DocumentsComponent className='mt-[300px] mb-[520px]' />
             <NonHaiTrovatoQuelloCheCercavi />
 
 

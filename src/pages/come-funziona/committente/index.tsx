@@ -3,7 +3,6 @@ import GET_EXPLENATION_COMPONENTS_BY_TITLE from '@/lib/apollo/dato_CMS/queries/g
 import React, { FC } from 'react'
 import ExplenationComponentElement, { ExplenationComponentElementInterface } from '../../../../components/molecules/ExplenationComponentElement';
 import { Box, Image } from '@chakra-ui/react';
-import ExplenationCard from '../../../../components/molecules/ExplenationCard';
 import FormComponent from '../../../../components/molecules/FormComponent';
 import StartComponent from '../../../../components/molecules/StartComponent';
 import NonHaiTrovatoQuelloCheCercavi from '../../../../components/molecules/NonHaiTrovatoQuelloCheCercavi';
@@ -23,7 +22,7 @@ export async function getStaticProps() {
             clientName: 'DATO_CMS_LINK',
         },
         variables: {
-            title: 'Explenation_Impresa'
+            title: 'Explenation_Committente'
         }
     });
 
@@ -49,7 +48,7 @@ const index: FC<{ explenation_Impresa: ExplenationComponentElementInterface[] }>
             ></Image>
             <StartComponent
                 element={{
-                    titolo: 'Ogni nuovo lavoro è una sfida, trova quella giusta per la tua impresa',
+                    titolo: 'Che tu sia un  <span style="color: #FFA500;">privato</span>, un’ <span style="color: #FFA500;">azienda</span> o un  <span style="color: #FFA500;">ente pubblico</span>, in Skimming abbiamo la soluzione per te',
                     sottotitolo: 'Con Skimming trovi ogni giorno nuove gare d’appalto per far conoscere la tua azienda',
                     immagineDesktop: 'https://www.datocms-assets.com/106122/1696855194-group-73.png',
                     imageDevice: 'https://www.datocms-assets.com/106122/1696856365-group-94.png',
@@ -59,7 +58,7 @@ const index: FC<{ explenation_Impresa: ExplenationComponentElementInterface[] }>
             {explenation_Impresa &&
 
                 <BoxWidth
-                    className='grid gap-[260px] lg:gap-[220px] mb-[520px]'
+                    className='grid gap-[260px] lg:gap-[220px] mb-[520px] '
 
                 >
 

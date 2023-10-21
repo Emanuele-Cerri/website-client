@@ -2,26 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+div {
+  -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
+* {
+  box-sizing: border-box;
+}
+.ReactCrop__crop-selection {
+  /* Regole di stile personalizzate */
+
+  border: none !important;
+  opacity: 1;
+}
+
+::selection {
+  /* Change highlight background color and text */
+  background: #fcb900;
+  color: #151515;
+}
+
+html {
+  scroll-behavior: smooth;
+}
