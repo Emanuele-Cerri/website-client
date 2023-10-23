@@ -63,7 +63,7 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
                     textStyle={['h2', 'h2', 'hero']}
                     color={'gray700'}
                     fontWeight={'700'}
-                    className='w-9/12 lg:w-full mx-auto'
+                    className='w-full mx-auto'
                 >
                     Abbiamo il piano su misura per te.
                 </Box>
@@ -71,7 +71,7 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
                     textStyle={['h4', 'h4', 'h2']}
                     color={'gray700'}
                     fontWeight={'700'}
-                    className='w-9/12 lg:w-full mx-auto'
+                    className='w-full mx-auto'
                 >
                     Che tu sia un <span
                         className='text-[#FCB900]'
@@ -82,9 +82,9 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
                     >committente</span>
                 </Box>
                 <Text
-                    textStyle={['h6', 'h6', 'h5']}
-                    color={['#718096', '#718096', 'dark']}
-                    fontWeight={['400', '400', '600']}
+                    textStyle={['h5', 'h5', 'h5']}
+                    color={['dark', 'dark', 'dark']}
+                    fontWeight={['600', '600', '600']}
                 >
                     Seleziona un profilo e scopri i vantaggi della nostra offerta
                 </Text>
