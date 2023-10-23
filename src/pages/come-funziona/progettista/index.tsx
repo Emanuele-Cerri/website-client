@@ -78,7 +78,7 @@ const index: FC<{ explenation_Progettista: ExplenationComponentElementInterface[
                 </BoxWidth>
             }
             <DocumentsComponent className='mt-[300px] mb-[520px]' />
-            <NonHaiTrovatoQuelloCheCercavi />
+            <NonHaiTrovatoQuelloCheCercavi className='mb-[520px]' />
 
 
         </>

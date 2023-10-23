@@ -7,6 +7,9 @@ import { Pricing } from '@/interfaces/pricing';
 import { Tab } from '@headlessui/react';
 import PricingCard from '../../../components/molecules/PricingCard';
 import FeatureRow from '../../../components/molecules/FeatureRow';
+import NonHaiTrovatoQuelloCheCercavi from '../../../components/molecules/NonHaiTrovatoQuelloCheCercavi';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
@@ -39,12 +42,12 @@ export async function getStaticProps() {
 
 const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
 
-
-    const [pricingTable, setPricingTable] = useState<Pricing>()
+    const [pricingTable, setPricingTable] = useState<Pricing>();
 
     useEffect(() => {
         setPricingTable(pricingSchema[0])
     }, [])
+
 
 
 
@@ -87,14 +90,15 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
                 </Text>
             </Box>
             <Tab.Group>
-                <Tab.List className="flex space-x-1 rounded-[4px] border-[1px] border-[#D0D5DD] w-fit bg-[#EEEEEE] p-[2px] mx-auto my-[60px]">
+                <Tab.List
+                    className="flex space-x-1 rounded-[4px] border-[1px] border-[#D0D5DD] w-full lg:w-fit bg-[#EEEEEE] p-[2px] mx-auto mb-[30px] mt-[50px] lg:my-[60px]">
                     {pricingSchema.map((element: Pricing, index: number) => (
                         <Tab
                             key={index}
                             className={({ selected }) =>
                                 classNames(
-                                    'w-fit min-w-[180px] rounded-[2px] py-[8px] text-sm font-medium leading-5 ',
-                                    'ring-[#EEEEEE]  focus:outline-none focus:ring-2',
+                                    'lg:w-fit w-full lg:min-w-[180px] rounded-[2px] py-[8px] text-sm font-medium leading-5 ',
+                                    'ring-[#EEEEEE]  focus:outline-none focus:ring-2  active:scale-[0.99]',
                                     selected
                                         ? 'bg-[#FCB900] text-[#151515] shadow'
                                         : ' text-[#757575] bg-[#EEEEEE] hover:bg-white/[0.12] '
@@ -117,21 +121,30 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
             </Tab.Group>
             <Box
                 width={'full'}
-                className='grid grid-cols-4 gap-[15px] mb-[50px]'
+                className='grid grid-cols-1 lg:grid-cols-4 gap-[15px] mb-[50px]'
             >
                 <Box></Box>
                 {pricingTable?.pricingTypology.map((element, index: number) => (
-                    <PricingCard element={element} key={index} />
+                    <PricingCard element={element} key={index} index={index} pricingSchema={pricingTable?.pricingSchema} />
                 ))}
             </Box>
 
             <Box
-                className='mb-[200px]'
+                className='hidden lg:grid '
             >
                 {pricingTable?.pricingSchema.map((element, index: number) => (
                     <FeatureRow key={index} element={element} />
                 ))}
             </Box>
+            <NonHaiTrovatoQuelloCheCercavi className='mb-[200px] mt-[350px]' />
+            <Image
+                src="https://www.datocms-assets.com/106122/1697894772-group-90-2.png"
+                alt="progettista"
+                width={400}
+                height={600}
+                objectFit='cover'
+                className='flex justify-center mx-auto w-1/2 lg:w-full'
+            />
 
 
         </BoxWidth >

@@ -85,7 +85,7 @@ const index: FC<{ explenation_Impresa: ExplenationComponentElementInterface[] }>
             }
 
             <DocumentsComponent className='mt-[300px] mb-[520px]' />
-            <NonHaiTrovatoQuelloCheCercavi />
+            <NonHaiTrovatoQuelloCheCercavi className='mb-[520px]' />
         </>
 
     )

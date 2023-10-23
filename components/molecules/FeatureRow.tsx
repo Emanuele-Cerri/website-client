@@ -29,7 +29,7 @@ const FeatureRow: FC<{ element: PricingSchema }> = ({ element }) => {
                             bg={'success30'}
                             key={index}
                             width={'fit-content'}
-                            className={element === true ? 'visible' : 'invisible'}
+                            className={`${element === true ? 'visible' : 'invisible'} ml-[15px]`}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M16.4001 5.20001L7.6001 14L3.6001 10" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

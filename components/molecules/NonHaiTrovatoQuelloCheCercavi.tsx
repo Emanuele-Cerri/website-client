@@ -1,11 +1,11 @@
 import { Box, Button, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { FC } from 'react'
 
-const NonHaiTrovatoQuelloCheCercavi = () => {
+const NonHaiTrovatoQuelloCheCercavi: FC<{ className?: string }> = ({ className }) => {
     return (
         <Box
             textAlign={'center'}
-            mb={'520px'}
+            className={className ? className : ''}
             mx={'20px'}
         >
             <Text
