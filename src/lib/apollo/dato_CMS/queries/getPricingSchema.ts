@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 const GET_PRICING_SCHEMA = gql`
 query allPricingSchemas{
-    allPricingSchemas{
+    allPricingSchemas(orderBy:orderid_ASC){
       title
       pricingTypology{
         title

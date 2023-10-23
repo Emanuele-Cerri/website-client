@@ -1,5 +1,5 @@
 import GET_EXPLENATION_CARDS from '@/lib/apollo/dato_CMS/queries/getExplenationCards';
-import { Box, Button, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import ExplenationCard, { ExplenationCardInterface } from '../../components/molecules/ExplenationCard';
 import { initApollo } from '@/lib/apollo';
@@ -8,6 +8,7 @@ import ExplenationComponentElement, { ExplenationComponentElementInterface } fro
 import CompileFormComponent from '../../components/molecules/CompileFormComponent';
 import FadeInWhenVisible from '../../components/atoms/FadeInWhenVisible';
 import BoxWidth from '../../components/atoms/BoxWidth';
+import Image from 'next/image';
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -127,7 +128,7 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     textStyle={['h2', 'h2', 'hero']}
                     color={'gray700'}
                     fontWeight={'700'}
-                    className='w-9/12 lg:w-full mx-auto'
+                    className='w-11/12 lg:w-full mx-auto'
                 >
                     Le gare d’appalto private, <span
                         className='text-[#FCB900]'
@@ -142,31 +143,34 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     Skimming BPE è una piattaforma innovativa
                     che ti permette di creare e gestire gare d’appalto private in pochi click
                 </Text>
-                <Box
-                    className=' lg:hidden mt-[32px] mb-[16px] '
-                >
-                    <FadeInWhenVisible>
+                <FadeInWhenVisible>
+                    <Box
+                        className=' lg:hidden mt-[32px] mb-[16px] '
+                    >
                         <Image
                             src={
                                 'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
                             }
                             loading="lazy"
-                            className='w-full lg:hidden'
-                            mx={'auto'}
+                            className='w-full lg:hidden mx-auto'
+                            alt='First Image'
+                            width={2000}
+                            height={200}
                         />
-                    </FadeInWhenVisible>
 
-                </Box>
-                <Button
-                    variant={'primary'}
-                    fontWeight={'700'}
-                    mx={'auto'}
-                    width={['80vw', '80vw', 'fit-content']}
-                    px={20}
-                    size={'md'}
-                >
-                    Crea una gara
-                </Button>
+                    </Box>
+                    <Button
+                        variant={'primary'}
+                        fontWeight={'700'}
+                        mx={'auto'}
+                        width={['80vw', '80vw', 'fit-content']}
+                        px={20}
+                        size={'md'}
+                    >
+                        Crea una gara
+                    </Button>
+                </FadeInWhenVisible>
+
 
             </Box>
             <Box
@@ -177,9 +181,11 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                         src={
                             'https://www.datocms-assets.com/106122/1695478622-group-74.png'
                         }
-                        loading="lazy"
-                        className=' lg:w-10/12'
-                        mx={'auto'}
+                        width={2000}
+                        height={1000}
+                        alt='First Image'
+                        className=' lg:w-10/12 mx-auto'
+
                     />
                 </FadeInWhenVisible>
 

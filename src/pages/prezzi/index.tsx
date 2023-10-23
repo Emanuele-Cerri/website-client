@@ -143,7 +143,7 @@ const index: FC<{ pricingSchema: Pricing[] }> = ({ pricingSchema }) => {
                 width={400}
                 height={600}
                 objectFit='cover'
-                className='flex justify-center mx-auto w-1/2 lg:w-full'
+                className='flex justify-center mx-auto w-1/2 lg:w-1/3'
             />
 
 
