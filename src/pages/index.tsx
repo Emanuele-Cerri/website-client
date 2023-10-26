@@ -118,11 +118,11 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
 
             <Box
                 textAlign={'center'}
-                mt={['30px', '30px', '80px']}
-                mb={['30px', '30px', '80px']}
+                mt={['30px', '30px', '45px']}
+                mb={['30px', '30px', '45px']}
 
                 display={'grid'}
-                gap={['16px', '16px', '32px']}
+                gap={['16px', '16px', '24px']}
             >
                 <Box
                     textStyle={['h2', 'h2', 'hero']}
@@ -143,51 +143,48 @@ const index: React.FC<{ comeFunziona: any, tipologieGara: any, perche_usare_skim
                     Skimming BPE è una piattaforma innovativa
                     che ti permette di creare e gestire gare d’appalto private in pochi click
                 </Text>
-                <FadeInWhenVisible>
-                    <Box
-                        className=' lg:hidden mt-[32px] mb-[16px] '
-                    >
-                        <Image
-                            src={
-                                'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
-                            }
-                            loading="lazy"
-                            className='w-full lg:hidden mx-auto'
-                            alt='First Image'
-                            width={2000}
-                            height={200}
-                        />
+                <Box
+                    className=' lg:hidden mt-[32px] mb-[16px] '
+                >
+                    <Image
+                        src={
+                            'https://www.datocms-assets.com/106122/1695480163-frame-76.png'
+                        }
+                        loading="lazy"
+                        className='w-full lg:hidden mx-auto'
+                        alt='First Image'
+                        width={2500}
+                        height={200}
+                    />
 
-                    </Box>
-                    <Button
-                        variant={'primary'}
-                        fontWeight={'700'}
-                        mx={'auto'}
-                        width={['80vw', '80vw', 'fit-content']}
-                        px={20}
-                        size={'md'}
-                    >
-                        Crea una gara
-                    </Button>
-                </FadeInWhenVisible>
+                </Box>
+
+                <Button
+                    variant={'primary'}
+                    fontWeight={'700'}
+                    mx={'auto'}
+                    width={['80vw', '80vw', 'fit-content']}
+                    px={20}
+                    size={'md'}
+                >
+                    Crea una gara
+                </Button>
 
 
             </Box>
             <Box
                 className='hidden lg:flex'
             >
-                <FadeInWhenVisible>
-                    <Image
-                        src={
-                            'https://www.datocms-assets.com/106122/1695478622-group-74.png'
-                        }
-                        width={2000}
-                        height={1000}
-                        alt='First Image'
-                        className=' lg:w-10/12 mx-auto'
+                <Image
+                    src={
+                        'https://www.datocms-assets.com/106122/1695478622-group-74.png'
+                    }
+                    width={2000}
+                    height={1000}
+                    alt='First Image'
+                    className=' lg:w-10/12 mx-auto'
 
-                    />
-                </FadeInWhenVisible>
+                />
 
             </Box>
 
